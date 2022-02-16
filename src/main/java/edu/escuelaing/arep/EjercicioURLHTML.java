@@ -1,5 +1,9 @@
 package edu.escuelaing.arep;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
@@ -7,19 +11,21 @@ import java.util.Scanner;
 public class EjercicioURLHTML {
 
     public static void main(String[] args) throws Exception{
-        System.out.println("URL:");
-        Scanner objURL = new Scanner(System.in);
-        String objectURL = objURL.next();
         try {
+            System.out.println("URL:");
+            Scanner objURL = new Scanner(System.in);
+            String objectURL = objURL.next();
             URL objetoURL = new URL(objectURL);
-            System.out.println("Protocol: " + objetoURL.getProtocol());
-            System.out.println("Authority: " + objetoURL.getAuthority());
-            System.out.println("Host: " + objetoURL.getHost());
-            System.out.println("Port: " + objetoURL.getPort());
-            System.out.println("Path: " + objetoURL.getPath());
-            System.out.println("Query: " + objetoURL.getQuery());
-            System.out.println("File: " + objetoURL.getFile());
-            System.out.println("Ref: " + objetoURL.getRef());
+            BufferedReader reader = new BufferedReader(new InputStreamReader(objetoURL.openStream()));
+            FileWriter resultado = new FileWriter("resultado.html");
+            BufferedWriter data = new BufferedWriter(resultado);
+            int fin = reader.read();
+            while(fin != -1){
+                data.write(reader.readLine());
+                fin = reader.read();
+            }
+            data.close();
+            objURL.close();
         }catch(MalformedURLException e){
             e.printStackTrace();
         }
