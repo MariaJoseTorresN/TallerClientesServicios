@@ -7,7 +7,7 @@ public class EjercicioURL{
 
     public static void main(String[] args) throws Exception{
        try {
-        URL objetoURL = new URL("https://www.escuelaing.edu.co:80/es/noticias/mujeres-en-la-ciencia-creatividad-tenacidad-e-ingenio/");    
+        URL objetoURL = new URL("https://www.spanishwithedyta.com:80/hom/SearchForm?Search=subjenctive&searchlocale=en_GB&action_results=Go");    
         System.out.println("Protocol: " + objetoURL.getProtocol());
         System.out.println("Authority: " + objetoURL.getAuthority());
         System.out.println("Host: " + objetoURL.getHost());
